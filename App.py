@@ -98,9 +98,15 @@ def profile():
         firstname = request.form['firstname']
         lastname = request.form['lastname']
         yearofgrad = request.form['yearofgrad']
+        linkedinprofile = request.form['linkedinprofile']
         lastdegree = request.form['lastdegree']
-        # Check if account exists using MySQL
+        university = request.form['university']
+        resume = request.form['resume']
+        username = "chandra"
         cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+        cursor.execute('INSERT INTO Profile VALUES (%s, %s, %s, %s, %s, %s, %s, (%s))', (username, firstname, lastname, yearofgrad, linkedinprofile, lastdegree, university, (resume)))
+        mysql.connection.commit()
+        msg = 'You have successfully registered!'
     elif request.method == 'POST':
         # Form is empty... (no POST data)
         msg = 'Please fill out the form!'
