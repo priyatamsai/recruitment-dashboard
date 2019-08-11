@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {register} from './userFunctions';
+import {register} from './applicant/userFunctions';
 
 class Register extends Component {
 		constructor(){
