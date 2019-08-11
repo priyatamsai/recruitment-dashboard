@@ -22,7 +22,7 @@ class Landing extends Component {
 					</Link>
 				</li>
 			</ul>
-			)
+		)
 		const userLink = (
 			<ul className="navbar-nav">
 				<li className="nav-item">
@@ -48,7 +48,6 @@ class Landing extends Component {
 			</ul>
 		)
 		return ( 
-
 			<nav className="navbar navbar-expand-lg navbar-dark bg-dark rounded">
 				<a className="navbar-brand" href="#">Recruitment-dashboard</a>
 				<button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">

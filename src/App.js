@@ -4,11 +4,10 @@ import {BrowserRouter as Router, Route} from 'react-router-dom';
 import Landing from './components/landing';
 import Login from './components/login';
 import Register from './components/Register';
-//import Profile from './components/profile';
+import Profile from './components/applicant/profile';
 import Navbar from './components/navbar';
-import Applicant from './components/applicant';
-import Profile from './components/profile';
-import Applied from './components/applied';
+import Applicant from './components/applicant/applicant';
+import Applied from './components/applicant/applied';
 import './App.css';
 
 function App() {
