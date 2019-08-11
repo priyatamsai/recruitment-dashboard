@@ -7,7 +7,7 @@ import Register from './components/Register';
 //import Profile from './components/profile';
 import Navbar from './components/navbar';
 //import Applicant from './components/applicant'
-import Recruiter from './components/recruiter';
+import Recruiter from './components/recruiterComps/recruiter';
 import './App.css';
 
 function App() {

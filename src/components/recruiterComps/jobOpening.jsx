@@ -8,7 +8,8 @@ class JobOpening extends Component {
         <div className="container">
             <p>{this.props.job.id}</p>
             <p>{this.props.job.description}</p>
-            <p>{this.props.job.experience}</p>    
+            <p>{this.props.job.experience}</p>  
+            <br></br>  
         </div>
         );
     }
