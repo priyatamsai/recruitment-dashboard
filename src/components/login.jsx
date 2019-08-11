@@ -6,7 +6,7 @@ class Login extends Component {
     constructor(){
         super()
         this.state ={
-            email: '',
+            username: '',
             password: '',
             errors: {}
         }
@@ -23,13 +23,13 @@ class Login extends Component {
         e.preventDefault()
 
         const user = {
-            email: this.state.email,
+            username: this.state.username,
             password: this.state.password
         }
 
         login(user).then(res => {
             if(res){
-                this.props.history.push('/profile')
+                this.props.history.push('/rec_profile')
             }
         })
     }
@@ -39,13 +39,13 @@ class Login extends Component {
                 <div className="jumbotron mt-5">
                     <div className="col-sm8- mx-auto">
                         <form noValidate onSubmit={this.onSubmit}>
-                            <label htmlFor="email">Email address</label>
+                            <label htmlFor="username">user name</label>
                             <input 
-                                type="email"
+                                type="text"
                                 className="form-control" 
-                                name="email" 
-                                placeholder="enter email"
-                                value={this.state.email} 
+                                name="username" 
+                                placeholder="enter username"
+                                value={this.state.username} 
                                 onChange={this.onChange}   
                             />
 

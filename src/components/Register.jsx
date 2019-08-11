@@ -5,9 +5,10 @@ class Register extends Component {
     constructor(){
         super()
         this.state ={
-            firstname: '',
+            username: '',
             email: '',
             password: '',
+            type: "1",
             errors: {}
         }
 
@@ -17,15 +18,17 @@ class Register extends Component {
 
     onChange(e){
         this.setState( { [e.target.name]: e.target.value})
+        console.log(this.state)
     }
 
     onSubmit(e){
         e.preventDefault()
 
         const newUser = {
-            firstname: this.state.firstname,
+            username: this.state.username,
             email: this.state.email,
-            password: this.state.password
+            password: this.state.password,
+            type: this.state.type
         }
 
         register(newUser).then(res => {
@@ -39,15 +42,15 @@ class Register extends Component {
             <div className="container">
                 <div className="jumbotron mt-5">
                     <div className="col-sm8- mx-auto">
-                        <form noValidate onSubmit={this.onSubmit}>
+                        <form noValidate onSubmit={this.onSubmit} method='POST'>
 
-                            <label htmlFor="email">First name</label>
+                            <label htmlFor="first_name">First name</label>
                             <input 
                                 type="text"
                                 className="form-control" 
-                                name="firstname" 
+                                name="username" 
                                 placeholder="name"
-                                value={this.state.firstname} 
+                                value={this.state.username} 
                                 onChange={this.onChange}   
                             />
 
@@ -70,6 +73,12 @@ class Register extends Component {
                                 value={this.state.password} 
                                 onChange={this.onChange}   
                             />
+                            <label htmlFor="utype">userrrtype</label>
+                            
+                            <select name="type" value={this.state.type} onChange={this.onChange} className="form-control">
+                                <option value="1">applicant</option>
+                                <option value="2">Recruiter</option>
+                            </select> 
 
                             <button type="submit" className="btn btn-lg btn-primary btn-block">
                                 Register

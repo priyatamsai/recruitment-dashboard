@@ -6,7 +6,8 @@ import Login from './components/login';
 import Register from './components/Register';
 //import Profile from './components/profile';
 import Navbar from './components/navbar';
-import Applicant from './components/applicant'
+//import Applicant from './components/applicant'
+import Recruiter from './components/recruiter';
 import './App.css';
 
 function App() {
@@ -19,7 +20,7 @@ function App() {
         <div className="container">
           <Route exact path="/register" component={Register} />
           <Route exact path="/login" component={Login} />
-          <Route exact path="/profile" component={Applicant} />
+          <Route exact path="/rec_profile" component={Recruiter} />
         </div>
       </div>
     </Router>
