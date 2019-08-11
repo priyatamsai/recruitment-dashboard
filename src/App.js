@@ -6,7 +6,9 @@ import Login from './components/login';
 import Register from './components/Register';
 //import Profile from './components/profile';
 import Navbar from './components/navbar';
-import Applicant from './components/applicant'
+import Applicant from './components/applicant';
+import Profile from './components/profile';
+import Applied from './components/applied';
 import './App.css';
 
 function App() {
@@ -19,7 +21,9 @@ function App() {
         <div className="container">
           <Route exact path="/register" component={Register} />
           <Route exact path="/login" component={Login} />
-          <Route exact path="/profile" component={Applicant} />
+          <Route exact path="/profile" component={Profile} />
+          <Route exact path="/getjobs" component={Applicant} />
+          <Route exact path="/applied" component={Applied} />
         </div>
       </div>
     </Router>
