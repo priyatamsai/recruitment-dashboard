@@ -44,7 +44,7 @@ export const profile = user => {
 			lastdegree: user.lastdegree, 
 			university: user.university, 
 			resume: user.resume
-			})
+		})
 		.then(response =>{
 			console.log('updating the profile!!')
 			//console.log(response.data)
