@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {register} from './recruiterComps/userFunctions';
+import {register} from './commonFunctions';
 
 class Register extends Component {
     constructor(){
@@ -12,17 +12,19 @@ class Register extends Component {
             errors: {}
         }
 
-        this.onChange =this.onChange.bind(this)
-        this.onSubmit =this.onSubmit.bind(this)
-    }
+		this.onChange =this.onChange.bind(this)
+		this.onSubmit =this.onSubmit.bind(this)
+	}
+
 
     onChange(e){
         this.setState( { [e.target.name]: e.target.value})
         console.log(this.state)
     }
 
-    onSubmit(e){
-        e.preventDefault()
+
+	onSubmit(e){
+			e.preventDefault()
 
         const newUser = {
             username: this.state.username,
@@ -31,20 +33,21 @@ class Register extends Component {
             type: this.state.type
         }
 
-        register(newUser).then(res => {
-            if(res){
-                this.props.history.push('/login')
-            }
-        })
-    }
+		register(newUser).then(res => {
+			if(res){
+				this.props.history.push('/login')
+			}
+		})
+	}
+	
+
     render() { 
         return ( 
             <div className="container">
                 <div className="jumbotron mt-5">
                     <div className="col-sm8- mx-auto">
                         <form noValidate onSubmit={this.onSubmit} method='POST'>
-
-                            <label htmlFor="first_name">First name</label>
+                            <label htmlFor="first_name">User name</label>
                             <input 
                                 type="text"
                                 className="form-control" 
@@ -54,15 +57,15 @@ class Register extends Component {
                                 onChange={this.onChange}   
                             />
 
-                            <label htmlFor="email">Email address</label>
-                            <input 
-                                type="email"
-                                className="form-control" 
-                                name="email" 
-                                placeholder="enter email"
-                                value={this.state.email} 
-                                onChange={this.onChange}   
-                            />
+							<label htmlFor="email">Email address</label>
+							<input 
+								type="email"
+								className="form-control" 
+								name="email" 
+								placeholder="enter email"
+								value={this.state.email} 
+								onChange={this.onChange}   
+							/>
 
                             <label htmlFor="password">password</label>
                             <input 
@@ -80,15 +83,16 @@ class Register extends Component {
                                 <option value="2">Recruiter</option>
                             </select> 
 
-                            <button type="submit" className="btn btn-lg btn-primary btn-block">
-                                Register
-                            </button>
-                        </form>
-                    </div>  
-                </div>
-            </div>
-         );
-    }
+
+							<button type="submit" className="btn btn-lg btn-primary btn-block">
+								Register
+							</button>
+						</form>
+					</div>  
+				</div>
+			</div>
+		 );
+	}
 }
  
 export default Register;
