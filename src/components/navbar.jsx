@@ -50,8 +50,8 @@ class Landing extends Component {
 		const recLink = (
 			<ul className="navbar-nav">
 				<li className="nav-item">
-					<Link to="/recProfile" className="nav-link">
-						{localStorage.usertoken}
+					<Link to="/rec_profile" className="nav-link">
+						{localStorage.rectoken}
 					</Link>
 				</li>
 				<li className="nav-item">
@@ -60,7 +60,7 @@ class Landing extends Component {
 					</Link>
 				</li>
 				<li className="nav-item">
-					<Link to="/listjobs" className="nav-link">
+					<Link to="/listmyopenings" className="nav-link">
 						Added openings
 					</Link>
 				</li>
@@ -85,7 +85,7 @@ class Landing extends Component {
 							</Link>
 						</li>
 					</ul>
-					{localStorage.usertoken ? userLink : loginRegLink}
+					{localStorage.usertoken ? userLink : (localStorage.rectoken ? recLink : loginRegLink)}
 				</div>
 			</nav>
 		);

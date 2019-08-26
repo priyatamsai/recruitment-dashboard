@@ -17,6 +17,7 @@ import Applied from './components/applicant/applied';
 import './App.css';
 
 function App() {
+  //<Route exact path="/openingDetail" component={OpeningStats} />
   return (
     <Router>
       <div className="App">
@@ -30,7 +31,7 @@ function App() {
           <Route exact path="/rec_profile" component={Recruiter} />
           <Route exact path="/addjob" component={AddJob} />
           <Route exact path="/listmyopenings" component={RecJoblistings} /> 
-          <Route exact path="/openingDetail" component={OpeningStats} />
+          
 
           <Route exact path="/profile" component={Profile} />
           <Route exact path="/getjobs" component={Applicant} />

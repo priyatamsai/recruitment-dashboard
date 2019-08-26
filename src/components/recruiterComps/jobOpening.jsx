@@ -3,7 +3,12 @@ import React, { Component } from 'react';
 class JobOpening extends Component {
     state = {  }
 
-    onClick(e){
+    constructor(props) {
+        super(props);
+        this.showStatus = this.showStatus.bind(this);
+      }
+
+    /*onClick(e){
 		e.preventDefault()
 
         const user = {
@@ -16,16 +21,25 @@ class JobOpening extends Component {
                 this.props.history.push('/rec_profile')
             }
         })
+    }*/
+
+    showStatus = (e)=> {
+        e.preventDefault();
+        console.log("hey..you know .. show stat is called")
+        this.props.onShowStatus(this.props.job.id)
     }
      
     render() {
+        
         return (
-        <div className="container">
-            <p>{this.props.job.id}</p>
-            <p>{this.props.job.description}</p>
-            <p>{this.props.job.experience}</p>  
-            <br></br>  
-        </div>
+            <tr>
+                <th scope="row">{this.props.job.id}</th>
+                <td>{this.props.job.title}</td>
+                <td>{this.props.job.description}</td>
+                <td>{this.props.job.experience}</td>
+                <td> <button onClick={(e) => this.showStatus(e)}>show status</button></td>
+            </tr>
+            
         );
     }
     

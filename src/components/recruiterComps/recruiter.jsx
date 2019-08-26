@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import AddJob from './addJob';
-import RecJobListing from './recJobsListing';
 
 
 class Recruiter extends Component {
@@ -11,7 +10,6 @@ class Recruiter extends Component {
                 <h2>recruiter</h2>
                     <div>
                         <AddJob />
-                        <RecJobListing />
                     </div>
             </div>
             

@@ -9,7 +9,7 @@ export const login = user => {
 		.then(response =>{
 			//console.log('logging in site!!')
 			var res = response.data
-			localStorage.setItem('usertoken',res.username)
+			localStorage.setItem('rectoken',res.username)
 			console.log(res.username)
 			return response.data
 		})
