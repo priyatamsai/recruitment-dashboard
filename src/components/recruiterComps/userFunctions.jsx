@@ -64,3 +64,17 @@ export const fetchMyOpenings = () => {
         })
     
 }
+
+export const getApplicants = id => {
+	return axios
+		.post('/getapplicants', {
+			jobid: id
+		})
+		.then(response =>{
+			console.log(response.data)
+			return response.data
+		})
+		.catch(err => {
+			console.log(err)
+		})
+}

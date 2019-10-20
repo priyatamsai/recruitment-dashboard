@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import JobOpening from './jobOpening';
 import {fetchMyOpenings} from './userFunctions';
+import OpeningStats from './openingStats';
 class RecJobListing extends Component {
     state = { 
         jobs: [],
@@ -27,7 +28,7 @@ class RecJobListing extends Component {
 
     showMyStat(id){
         console.log(id)
-        this.setState({showStat: true})
+        this.setState({showStat: true, jobId: id})
     }
     render() { 
         const jobsList = (
@@ -54,7 +55,7 @@ class RecJobListing extends Component {
         )
 
         const jobStat = (
-            <p> Show some job stat!!</p>
+            <OpeningStats id={this.state.jobId} />
         )
         let showContent;
 

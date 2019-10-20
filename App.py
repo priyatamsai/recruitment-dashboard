@@ -7,9 +7,9 @@ app = Flask(__name__)
 
 # Enter your database connection details below
 app.config['MYSQL_HOST'] = '127.0.0.1'
-app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = ''
-app.config['MYSQL_DB'] = 'recruitment'
+app.config['MYSQL_USER'] = 'user'
+app.config['MYSQL_PASSWORD'] = 'password'
+app.config['MYSQL_DB'] = 'rec_dashboard'
 
 # Intialize MySQL
 mysql = MySQL(app)
@@ -170,6 +170,54 @@ def apply():
 	cursor.execute('INSERT INTO Applied VALUES (%s, %s, %s)', (jobid, username, status))
 	mysql.connection.commit()
 	msg = 'You have successfully Applied!'
+	return msg
+
+@app.route('/addjobopening', methods=['GET', 'POST'])
+def addOpening():
+    print ("in job opening>>")
+    cur = mysql.connection.cursor()
+    title = request.get_json()['title']
+    description = request.get_json()['description']
+    company = request.get_json()['company']
+    experience = request.get_json()['experience']
+    
+    print(title)
+    
+    if title is None:
+    	print ("yo yo!!']")
+    	return 'no yoyo'
+    	
+    cur.execute("INSERT INTO JobOpening (title, description, company, experience, recruterid) VALUES ('" + 
+		str(title) + "', '" + 
+		str(description) + "', '" + 
+		str(company) + "', '" + 
+		str(experience) + "', '" +
+		"" + "')")
+    mysql.connection.commit()
+	
+    result = {
+		'title' : title,
+        'experience' : experience,
+        'description' : description,
+        'company' : company
+	}
+
+    return jsonify({'result' : result})
+
+
+@app.route('/fetchRecOpenings', methods=['GET', 'POST'])
+def fetchRecOpenings():
+	# Output message if something goes wrong...
+	print ("in fetch Opening>>")
+	msg = 'Improper req!'
+	# Check if "username" and "password" POST requests exist (user submitted form)
+	if request.method == 'GET':
+		cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+		cursor.execute('SELECT * FROM JobOpening')
+	    #Fetch one record and return result
+		jobs = cursor.fetchall()
+		return jsonify({'jobs' : jobs})
+		
 	return msg
 
 if __name__ == '__main__':
