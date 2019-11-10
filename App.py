@@ -2,8 +2,10 @@ from flask import Flask, render_template, request, redirect, url_for, session, j
 from flask_mysqldb import MySQL
 import MySQLdb.cursors
 import re
+from flask_redis import FlaskRedis
 
 app = Flask(__name__)
+print(__name__)
 
 # Enter your database connection details below
 app.config['MYSQL_HOST'] = '127.0.0.1'
@@ -16,6 +18,8 @@ mysql = MySQL(app)
 
 # Change this to your secret key (can be anything, it's for extra protection)
 app.secret_key = 'your secret key'
+
+
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -220,5 +224,16 @@ def fetchRecOpenings():
 		
 	return msg
 
-if __name__ == '__main__':
-		app.run(debug = True)
+#if __name__ == '__main__':
+if __name__ == 'App':
+	### using this for [ [job_id, skill_bitsets], ..] list 
+	print("strt here")
+	job_skills = []
+	cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+	cursor.execute('SELECT * FROM JobOpening')
+	result = cursor.fetchall()
+	print(result)
+	for job in result:
+		print(job)
+	app.run(debug = True)
+	print("endhere")

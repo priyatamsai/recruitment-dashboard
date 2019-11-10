@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+//import PreferredQauls from './prefferred_quals';
 
 import {addJob} from './userFunctions';
 
@@ -10,7 +11,8 @@ class AddJob extends Component {
             experience: '',
             description: '',
             company: '',
-            numOpenings: ''
+            numOpenings: '',
+            pref_quals: []
         }
 
         this.onChange =this.onChange.bind(this)
@@ -18,7 +20,15 @@ class AddJob extends Component {
     }
 
     onChange(e){
-        this.setState( { [e.target.name]: e.target.value})
+        if(e.target.name === 'pref_quals'){
+            //https://stackoverflow.com/questions/26253351/correct-modification-of-state-arrays-in-reactjs   --> look at this for info
+            this.setState({pref_quals: [...this.state.pref_quals, e.target.value] }    )
+            
+            //console.log(this.state[e.target.name])
+        }else{
+            this.setState( { [e.target.name]: e.target.value})
+            console.log("improper",this.state)
+        }
     }
 
     onSubmit(e){
@@ -44,6 +54,21 @@ class AddJob extends Component {
         })
     }
     render() { 
+        const QualItem = (props) => {
+			return(
+			 <div>
+				<span>{props.qual_name}</span>
+			 </div>
+			);
+		}
+        const PrefList =(props) => {
+            console.log(props.quals)
+			return(
+				<div>
+					{props.quals.map((qual) => <span>{qual}</span>)}
+				</div>
+			);
+		} 
         return ( 
             <div className="container">
                 <div className="jumbotron mt-5">
@@ -88,11 +113,20 @@ class AddJob extends Component {
                                 value={this.state.company} 
                                 onChange={this.onChange}   
                             />
-
+                            <select name="pref_quals" onChange={this.onChange} className="form-control">
+                                <option value="0">None</option>
+                                <option value="1">c</option>
+                                <option value="2">c++</option>
+                                <option value="3">java</option>
+                            </select>
+                            
                             <button type="submit" className="btn btn-lg btn-primary btn-block">
                                 Add Job
                             </button>
                         </form>
+                        <div className="card">
+                            <PrefList quals={this.state.pref_quals}/> 
+                        </div>
                     </div>  
                 </div>
             </div>

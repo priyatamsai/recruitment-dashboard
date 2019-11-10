@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {getApplicants} from './userFunctions';
 
 class OpeningStats extends Component {
     state = { 
