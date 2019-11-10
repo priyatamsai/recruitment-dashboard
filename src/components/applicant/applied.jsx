@@ -5,7 +5,7 @@ class applicant extends Component {
 	constructor(props){
 		super(props)
 		this.state={
-			username: localStorage.usertoken,
+			username: localStorage.applicanttoken,
 			jobs: []
 		}
 	}

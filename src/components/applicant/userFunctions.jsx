@@ -83,6 +83,21 @@ export const getProfileData = username => {
 		})
 }
 
+export const applyJob = (username, jobid) => {
+	return axios
+		.post('/apply', {
+			username: username,
+			jobid: jobid
+		})
+		.then(response =>{
+			console.log(response.data)
+			return response.data
+		})
+		.catch(err => {
+			console.log(err)
+		})
+}
+
 export const getAppliedJobs = username => {
 	return axios
 		.post('/getjobs', {

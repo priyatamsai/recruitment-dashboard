@@ -138,6 +138,7 @@ def getJobOpenings():
 	result = cursor.fetchall()
 	json_data=[]
 	json_data = [dict(row.items()) for row in result]
+	print(json_data)
 	return json.dumps(json_data)
 
 @app.route('/getprofile', methods=['GET', 'POST'])
@@ -170,7 +171,8 @@ def apply():
 	json_data = request.get_json()
 	username = json_data.get('username')
 	jobid = json_data.get('jobid')
-	status = 'Applied'
+	#'Applied'
+	status = 1
 	cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
 	cursor.execute('INSERT INTO Applied VALUES (%s, %s, %s)', (jobid, username, status))
 	mysql.connection.commit()
@@ -225,8 +227,8 @@ def fetchRecOpenings():
 		
 	return msg
 
-#if __name__ == '__main__':
-if __name__ == 'App':
+if __name__ == '__main__':
+#if __name__ == 'App':
 	### using this for [ [job_id, skill_bitsets], ..] list 
 	"""print("strt here")
 	job_skills = []

@@ -1,16 +1,17 @@
 import React, { Component } from 'react';
-import {getJobs} from './userFunctions';
+import {getJobs, applyJob} from './userFunctions';
 
 class applicant extends Component {
 	constructor(props){
 		super(props)
 		this.state={
 			jobs: [],
+			// currently below 2 attributes are not used.
 			apply_for_job: false,
 			apply_job_id: -1
 		}
 		this.submit = this.submit.bind(this)
-		this.submit = this.submit.bind(this)
+		this.start_apply_job = this.start_apply_job.bind(this)
 	}
 
 	submit(e){
@@ -22,8 +23,11 @@ class applicant extends Component {
 		})
 	}
 
-	start_apply_job(id){
-		this.state.apply_for_job=true
+	start_apply_job(job_id){
+		//this.setState({apply_for_job: true})
+		applyJob(localStorage.applicanttoken,job_id).then(
+			this.props.history.push('/applied')
+		)
 	}
 
 	render() { 
@@ -63,10 +67,9 @@ class applicant extends Component {
 				<button type="submit" onClick={this.submit} className="btn btn-lg btn-primary btn-block">
 				Get Jobs
 				</button>
-				
-				<JobList jobs = {this.state.jobs} />
+				{showContent}
 			</div>
-		);
+		);//<JobList jobs = {this.state.jobs} />
 	}
 }
  
