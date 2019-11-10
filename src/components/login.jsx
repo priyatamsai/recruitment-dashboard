@@ -29,7 +29,10 @@ class Login extends Component {
 
         login(user).then(res => {
             if(res){
-                this.props.history.push('/rec_profile')
+				if (res.type == 1)
+					this.props.history.push('/profile')
+				else if (res.type == 2)
+					this.props.history.push('/rec_profile')
             }
         })
     }

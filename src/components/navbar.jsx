@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import {Link, withRouter} from 'react-router-dom';
 
+import {logout} from './commonFunctions';
+
 class Landing extends Component {
 	state = {  }
 	logOut(e){
 		e.preventDefault()
-		localStorage.removeItem('usertoken')
+		localStorage.removeItem('applicanttoken')
+		localStorage.removeItem('rectoken')
 		this.props.history.push('/')
 	}
 	render() { 
@@ -27,7 +30,7 @@ class Landing extends Component {
 			<ul className="navbar-nav">
 				<li className="nav-item">
 					<Link to="/profile" className="nav-link">
-						{localStorage.usertoken}
+						{localStorage.applicanttoken}
 					</Link>
 				</li>
 				<li className="nav-item">
@@ -85,7 +88,7 @@ class Landing extends Component {
 							</Link>
 						</li>
 					</ul>
-					{localStorage.usertoken ? userLink : (localStorage.rectoken ? recLink : loginRegLink)}
+					{localStorage.applicanttoken ? userLink : (localStorage.rectoken ? recLink : loginRegLink)}
 				</div>
 			</nav>
 		);
